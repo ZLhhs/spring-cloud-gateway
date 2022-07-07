@@ -6,13 +6,15 @@ test:
 
 
 spring:
+  application:
+    name: MyGateway
   jmx:
     enabled: false
   cloud:
     gateway:
-      default-filters:
-      - PrefixPath=/httpbin
-      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+#      default-filters:
+#      - PrefixPath=/httpbin
+#      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
 
       routes:
       # =====================================
@@ -32,6 +34,14 @@ spring:
         predicates:
         - Path=/**
 
+      - id: ServiceProvider
+        uri: lb://ServiceProvider
+        order: 7788
+        predicates:
+        - Path=/service/**
+        filters:
+          - StripPrefix=1
+
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
@@ -40,3 +50,12 @@ logging:
     reactor.ipc.netty: DEBUG
 
 management.endpoints.web.exposure.include: '*'
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+
+server:
+  port: 8080
