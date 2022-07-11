@@ -15,6 +15,7 @@
 	<description>Spring Cloud Gateway Core</description>
 	<properties>
 		<main.basedir>${basedir}/..</main.basedir>
+		<kotlin.compiler.apiVersion>1.6</kotlin.compiler.apiVersion>
 	</properties>
 
 	<dependencies>
@@ -65,11 +66,13 @@
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib</artifactId>
+			<version>1.6.10</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-reflect</artifactId>
+			<version>1.6.10</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -123,6 +126,7 @@
 				<!-- Based on instructions here - https://kotlinlang.org/docs/reference/using-maven.html -->
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<groupId>org.jetbrains.kotlin</groupId>
+				<version>1.6.10</version>
 				<configuration>
 					<jvmTarget>1.8</jvmTarget>
 				</configuration>
